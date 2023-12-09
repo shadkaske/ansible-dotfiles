@@ -24,7 +24,7 @@ ansible_repositories:
     branch: main
   - name: dotfiles
     repo: git@github.com:shadkaske/ansible-dotfiles
-    branch:
+    branch: main
 
 code_repositories:
   - name: iforms
