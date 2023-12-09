@@ -1,0 +1,8 @@
+---
+code_path: "{{ ansible_env.HOME }}/Code"
+
+site_path: "{{ code_path }}/sites"
+
+ansible_path: "{{ code_path }}/ansible"
+
+sources_path: "{{ code_path }}/sources"

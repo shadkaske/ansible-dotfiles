@@ -1,0 +1,35 @@
+sites_repositories:
+  - name: buckets
+    repo: git@bitbucket.org:showplacecabinetry/order-workflow
+    branch: "develop"
+  - name: routes
+    repo: git@bitbucket.org:showplacecabinetry/webdocs-cs
+    branch: "develop"
+  - name: documentlookup
+    repo: git@bitbucket.org:showplacecabinetry/documentlookup
+    branch: "develop"
+  - name: editracker
+    repo: git@bitbucket.org:showplacecabinetry/editracker
+    branch: "develop"
+  - name: repcontacts
+    repo: git@bitbucket.org:showplacecabinetry/repcontact.git
+    branch: "develop"
+
+ansible_repositories:
+  - name: server-configs
+    repo: git@bitbucket.org:showplacecabinetry/ansible-configs.git
+    branch: main
+  - name: pro-linode
+    repo: git@bitbucket.org:showplacecabinetry/prolinodedevbox.git
+    branch: main
+  - name: dotfiles
+    repo: git@github.com:shadkaske/ansible-dotfiles
+    branch:
+
+code_repositories:
+  - name: iforms
+    repo: git@bitbucket.org:showplacecabinetry/iforms.git
+    branch: master
+  - name: sql-scripts
+    repo: git@bitbucket.org:showplacecabinetry/sql-scripts.git
+    branch: master
