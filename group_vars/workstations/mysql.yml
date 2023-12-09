@@ -9,3 +9,4 @@ mysql_packages:
   - mariadb-client
   - mariadb-server
   - python3-mysqldb
+

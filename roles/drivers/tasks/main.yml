@@ -1,0 +1,8 @@
+---
+- name: Install IBM iAccess Driver
+  ansible.builtin.include_tasks:
+    ibmi.yml
+
+- name: Install MSSQL Driver
+  ansible.builtin.include_tasks:
+    mssql.yml

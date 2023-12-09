@@ -42,8 +42,8 @@ Make sure that the folowing information is configured in the files listed:
       - [x] Include valet as a global package
     - [x] Install MySQL
     - [ ] Install Dependencies
-      - [ ] IBM driver
-      - [ ] Microsoft Sql Driver
+      - [x] IBM driver
+      - [x] Microsoft Sql Driver
     - [ ] Install NodeJS
   - [ ] Configure Shell
     - [ ] Install Packages
