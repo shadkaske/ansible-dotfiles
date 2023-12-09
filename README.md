@@ -9,6 +9,8 @@ all of the ansible configs are based on.
 
 ## Set Up
 
+### Configuration
+
 Make sure that the folowing information is configured in the files listed:
 
     - inventory.ini
@@ -18,24 +20,30 @@ Make sure that the folowing information is configured in the files listed:
     - .become.pass
         - Put the remote user sudo password in this file. It is ignored
 
+### Roles and Tasks
+    - Code Repositorires
+        - Set up any git repositories that you want included in group_vars/workstations/repositories.yml
+        - Configure paths for your stuff in group_vars/workstations/paths.yml
+
 # TODO List
-  - [ ] Clone Code Repos ( this should work correctly if you are forwarding your agent )
-    - [ ] Sites
-    - [ ] Ansible
-    - [ ] Others
+  - [x] Clone Code Repos ( this should work correctly if you are forwarding your agent )
+    - [x] Sites
+    - [x] Ansible
+    - [x] Others
   - [ ] Configure Dev Environment
     - [ ] Install PHP
     - [ ] Install Composer
       - [ ] Include valet as a global package
-    - [ ] Install NodeJS
     - [ ] Install MySQL
     - [ ] Install Dependencies
       - [ ] IBM driver
       - [ ] Microsoft Sql Driver
+    - [ ] Install NodeJS
   - [ ] Configure Shell
     - [ ] Install Packages
+        - [ ] Cargo Packages
+        - [ ] Neovim
     - [ ] Change Shell
-    - [ ] Get Dotfiles and Stow them
   - [ ] Configure Kde Plasmas
     - [ ] Update to latest Version
     - [ ] Install Packages
