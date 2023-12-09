@@ -24,6 +24,11 @@ Make sure that the folowing information is configured in the files listed:
     - Code Repositorires
         - Set up any git repositories that you want included in group_vars/workstations/repositories.yml
         - Configure paths for your stuff in group_vars/workstations/paths.yml
+    - PHP
+        - Set the php packages in group_vars/workstations/php.yml
+        - Default php version can be changed
+        - Additional packages can be installed or more versions of php with the php_packages array
+
 
 # TODO List
   - [x] Clone Code Repos ( this should work correctly if you are forwarding your agent )
@@ -31,7 +36,7 @@ Make sure that the folowing information is configured in the files listed:
     - [x] Ansible
     - [x] Others
   - [ ] Configure Dev Environment
-    - [ ] Install PHP
+    - [x] Install PHP
     - [ ] Install Composer
       - [ ] Include valet as a global package
     - [ ] Install MySQL

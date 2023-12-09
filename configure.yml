@@ -22,7 +22,9 @@
       tags: code
     - role: geerlingguy.php-versions
       tags: [php, dev]
+      become: true
     - role: geerlingguy.php
       tags: [php, dev]
+      become: true
 
 # vim: ft=yaml.ansible
