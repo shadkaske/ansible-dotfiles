@@ -1,0 +1,12 @@
+---
+roles:
+  - name: geerlingguy.php-versions
+  - name: geerlingguy.php
+  # - name: geerlingguy.nodejs
+  # - name: geerlingguy.mysql
+  # - name: darkwizard242.googlechrome
+  # - name: gantsign.visual-studio-code
+
+collections:
+  - community.general
+  - ansible.posix

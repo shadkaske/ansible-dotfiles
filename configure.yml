@@ -18,6 +18,11 @@
         state: present
 
   roles:
-    - code
+    - role: code
+      tags: code
+    - role: geerlingguy.php-versions
+      tags: [php, dev]
+    - role: geerlingguy.php
+      tags: [php, dev]
 
 # vim: ft=yaml.ansible
