@@ -29,5 +29,8 @@
     - role: geerlingguy.composer
       tags: [php, composer]
       become: true
+    - role: geerlingguy.mysql
+      tags: [dev, mysql]
+      become: true
 
 # vim: ft=yaml.ansible

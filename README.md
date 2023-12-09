@@ -40,7 +40,7 @@ Make sure that the folowing information is configured in the files listed:
     - [x] Install PHP
     - [x] Install Composer
       - [x] Include valet as a global package
-    - [ ] Install MySQL
+    - [x] Install MySQL
     - [ ] Install Dependencies
       - [ ] IBM driver
       - [ ] Microsoft Sql Driver

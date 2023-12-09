@@ -1,0 +1,11 @@
+---
+mysql_users:
+  - name: laravel
+    host: "%"
+    password: secret
+    priv: "*.*:ALL"
+
+mysql_packages:
+  - mariadb-client
+  - mariadb-server
+  - python3-mysqldb
