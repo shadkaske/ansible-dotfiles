@@ -28,7 +28,8 @@ Make sure that the folowing information is configured in the files listed:
         - Set the php packages in group_vars/workstations/php.yml
         - Default php version can be changed
         - Additional packages can be installed or more versions of php with the php_packages array
-
+    - Composer
+        - If you need or don't need packages, group_vars/workstations/composer.yml
 
 # TODO List
   - [x] Clone Code Repos ( this should work correctly if you are forwarding your agent )
@@ -37,8 +38,8 @@ Make sure that the folowing information is configured in the files listed:
     - [x] Others
   - [ ] Configure Dev Environment
     - [x] Install PHP
-    - [ ] Install Composer
-      - [ ] Include valet as a global package
+    - [x] Install Composer
+      - [x] Include valet as a global package
     - [ ] Install MySQL
     - [ ] Install Dependencies
       - [ ] IBM driver

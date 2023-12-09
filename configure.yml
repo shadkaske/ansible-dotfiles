@@ -26,5 +26,8 @@
     - role: geerlingguy.php
       tags: [php, dev]
       become: true
+    - role: geerlingguy.composer
+      tags: [php, composer]
+      become: true
 
 # vim: ft=yaml.ansible

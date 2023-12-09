@@ -2,6 +2,7 @@
 roles:
   - name: geerlingguy.php-versions
   - name: geerlingguy.php
+  - name: geerlingguy.composer
   # - name: geerlingguy.nodejs
   # - name: geerlingguy.mysql
   # - name: darkwizard242.googlechrome

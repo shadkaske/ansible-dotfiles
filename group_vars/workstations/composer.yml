@@ -1,0 +1,6 @@
+---
+composer_keep_updated: true
+
+composer_global_packages:
+  - name: laravel/laravel
+  - name: cpriego/valet-linux
