@@ -1,0 +1,60 @@
+---
+- name: Ensure Sites Path Exists
+  ansible.builtin.file:
+    path: "{{ site_path }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0775"
+
+- name: Clone Site Repos
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "{{ site_path }}/{{ item.name }}"
+    clone: true
+    update: true
+    version: "{{ item.branch }}"
+    accept_hostkey: true
+  become: false
+  with_items: "{{ sites_repositories }}"
+
+- name: Ensure Ansible Path Exists
+  ansible.builtin.file:
+    path: "{{ ansible_path }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0775"
+
+- name: Clone Ansilbe Repos
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "{{ ansible_path }}/{{ item.name }}"
+    clone: true
+    update: true
+    version: "{{ item.branch }}"
+    accept_hostkey: true
+  become: false
+  with_items: "{{ ansible_repositories }}"
+
+- name: Ensure Code Path Exists
+  ansible.builtin.file:
+    path: "{{ code_path }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0775"
+
+- name: Clone Code Repos
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "{{ code_path }}/{{ item.name }}"
+    clone: true
+    update: true
+    version: "{{ item.branch }}"
+    accept_hostkey: true
+  become: false
+  with_items: "{{ code_repositories }}"
+
+# vim: ft=yaml.code
+# code: language=code

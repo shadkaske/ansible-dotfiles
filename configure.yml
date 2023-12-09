@@ -1,0 +1,23 @@
+---
+- name: Configure Workstations
+  hosts: workstations
+  remote_user: kaskshad
+
+  pre_tasks:
+    - name: Update the System
+      become: true
+      ansible.builtin.apt:
+        update_cache: true
+        upgrade: dist
+
+    - name: Install Required Packages
+      become: true
+      ansible.builtin.apt:
+        pkg:
+          - git
+        state: present
+
+  roles:
+    - code
+
+# vim: ft=yaml.ansible
