@@ -21,40 +21,4 @@
   ansible.builtin.apt:
     deb: /tmp/ibm-iaccess-driver.deb
 
-- name: Install IBM iAccess Client PreReqs
-  ansible.builtin.package:
-    name:
-      - default-jdk
-      - dialog
-    state: present
-
-- name: Create Install Dir for iAccess
-  ansible.builtin.file:
-    state: directory
-    path: /opt/ibm/iAccessClientSolutions
-    owner: root
-    group: root
-    mode: u=rwx,g=rx,o=rx
-
-- name: Extract Files
-  ansible.builtin.unarchive:
-    src: IBMiAccess_v1r1.zip
-    dest: /opt/ibm/iAccessClientSolutions
-    exclude: "*Application*"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
-    mode: u=rwx,g=rwx,o=rx
-
-- name: Set Launchers to Executable
-  ansible.builtin.file:
-    dest: /opt/ibm/iAccessClientSolutions/Start_Programs/Linux_x86-64/acslaunch_linux-64
-    mode: a+x
-
-- name: Copy Desktop File
-  ansible.builtin.copy:
-    src: IBMiAccessClient.desktop
-    dest: /usr/share/applications/IBMiAccessClient.desktop
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
-    mode: u=rw,g=rw,o=r
 # vim: ts=2 tw=2 et ft=yaml.ansible
