@@ -20,6 +20,8 @@
   roles:
     - role: code
       tags: code
+    - role: nodejs
+      tags: [node, nodejs]
     - role: geerlingguy.php-versions
       tags: [php, dev]
       become: true

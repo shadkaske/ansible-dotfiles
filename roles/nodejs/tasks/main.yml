@@ -1,0 +1,28 @@
+- name: Install NodeJs
+  become: true
+  community.general.snap:
+    name: node
+    state: present
+    channel: 18/stable
+    classic: true
+
+- name: Register Current npm Prefix
+  ansible.builtin.command:
+    cmd: npm get prefix
+  register: current_npm_prefix
+  tags: skip_ansible_lint
+
+- name: Set My NPM Prefix
+  ansible.builtin.command:
+    cmd: "npm set prefix {{ npm_prefix }}"
+  when: current_npm_prefix.stdout != npm_prefix
+  tags: skip_ansible_lint
+
+- name: Install Global NPM Packages if Defined
+  community.general.npm:
+    name: "{{ item }}"
+    global: true
+  when: npm_global_packages is defined
+  with_items: "{{ npm_global_packages }}"
+
+# vim: ft=yaml.ansible:
