@@ -1,5 +1,5 @@
 ---
-- name: Configure Workstations
+- name: Configure PHP Dev Workstations
   hosts: workstations
   remote_user: kaskshad
 

@@ -62,3 +62,5 @@
   ansible.builtin.file:
     path: /etc/sudoers.d/valet-install
     state: absent
+
+# vim: ft=yaml.ansible:
