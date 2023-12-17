@@ -4,9 +4,6 @@ roles:
   - name: geerlingguy.php
   - name: geerlingguy.composer
   - name: geerlingguy.mysql
-  # - name: geerlingguy.nodejs
-  # - name: darkwizard242.googlechrome
-  # - name: gantsign.visual-studio-code
 
 collections:
   - community.general
