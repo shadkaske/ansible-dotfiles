@@ -1,0 +1,36 @@
+---
+- name: Set Variable for Config File
+  ansible.builtin.set_fact:
+    available_conf: "/etc/nginx/sites-available/{{ item.name }}.conf"
+    enabled_config: "/etc/nginx/sites-enabled/{{ item.name }}.conf"
+
+- name: Check if the Available Config Exists
+  ansible.builtin.stat:
+    path: "{{ available_conf }}"
+  register: site_available
+
+- name: Check if the Config is Enabled
+  ansible.builtin.stat:
+    path: "{{ available_conf }}"
+  register: site_enabled
+
+- name: Create Site Config File
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: "{{ available_conf }}"
+    owner: root
+    group: root
+    mode: "0644"
+  when: ( not site_available.stat.exists )
+
+- name: Link New Site Config
+  ansible.builtin.file:
+    src: "{{ available_conf }}"
+    dest: "/etc/nginx/sites-enabled/{{ item.name }}.conf"
+    state: link
+    owner: root
+    group: root
+    mode: "0644"
+  when: ( not site_enabled.stat.exists )
+
+# vim: ts=2 tw=2 et ft=yaml.ansible

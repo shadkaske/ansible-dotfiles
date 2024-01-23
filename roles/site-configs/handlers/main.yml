@@ -1,0 +1,20 @@
+---
+- name: Restart Nginx
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted
+  listen: restart nginx
+
+- name: Restart MySQL
+  ansible.builtin.systemd:
+    name: mysqld
+    state: restarted
+  listen: restart mysql
+
+- name: Restart PHP FPM 8.2
+  ansible.builtin.systemd:
+    name: "php8.2-fpm"
+    state: restarted
+  listen: restart fpm 8.2
+
+# vim: ts=2 tw=2 et ft=yaml.ansible

@@ -1,0 +1,56 @@
+---
+- name: Create Databases
+  ansible.builtin.include_tasks: db.yml
+  with_items: "{{ sites_repositories }}"
+
+- name: Create New Database User
+  community.mysql.mysql_user:
+    name: "laravel"
+    password: "secret"
+    state: present
+    priv: "*.*:ALL"
+    login_unix_socket: /run/mysqld/mysqld.sock
+
+- name: Install mkcert and dependancies
+  ansible.builtin.apt:
+    name:
+      - mkcert
+      - libnss3-tools
+    state: present
+
+- name: Install mkcert CA Certificate
+  become: false
+  ansible.builtin.command:
+    cmd: mkcert -install
+    creates: "{{ ansible_env.HOME }}/.local/share/mkcert/rootCA-key.pem"
+
+- name: Set Up SSL Certificates
+  ansible.builtin.include_tasks: mkcert.yml
+  with_items: "{{ sites_repositories }}"
+
+- name: Install nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+    install_recommends: false
+
+- name: Create Nginx Site Configs
+  ansible.builtin.include_tasks: nginx.yml
+  with_items: "{{ sites_repositories }}"
+
+- name: Add hosts file entries
+  ansible.builtin.lineinfile:
+    dest: /etc/hosts
+    line: "127.0.0.1    {{ item.name }}.test"
+    state: present
+  with_items: "{{ sites_repositories }}"
+
+- name: Notify Services to Restart
+  ansible.builtin.debug:
+    msg: Restart LEMP Stack
+  notify:
+    - restart mysql
+    - restart fpm 8.2
+    - restart nginx
+
+# vim: ts=2 tw=2 et ft=yaml.ansible

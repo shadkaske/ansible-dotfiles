@@ -37,5 +37,8 @@
     - role: drivers
       tags: [mssql, ibm]
       become: true
+    - role: site-configs
+      tags: sites
+      become: true
 
 # vim: ft=yaml.ansible

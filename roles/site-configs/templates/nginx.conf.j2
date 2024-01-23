@@ -1,0 +1,55 @@
+server {
+  listen [::]:443 ssl;
+  listen 443 ssl;
+
+  ssl_certificate {{ ansible_env.HOME }}/.local/share/mkcert/{{ item.name }}.test.pem;
+  ssl_certificate_key {{ ansible_env.HOME }}/.local/share/mkcert/{{ item.name }}.test-key.pem;
+
+  server_name {{ item.name }}.test;
+  root {{ site_path }}/{{ item.name }}/public;
+
+  add_header X-Frame-Options "SAMEORIGIN";
+  add_header X-XSS-Protection "1; mode=block";
+  add_header X-Content-Type-Options "nosniff";
+
+  index index.html index.htm index.php;
+
+  charset utf-8;
+
+  location / {
+      try_files $uri $uri/ /index.php?$query_string;
+  }
+
+  location = /favicon.ico { access_log off; log_not_found off; }
+  location = /robots.txt  { access_log off; log_not_found off; }
+
+  error_page 404 /index.php;
+
+  client_max_body_size 128m;
+
+  location ~ \.php$ {
+    fastcgi_param PHP_VALUE "upload_max_filesize=128M \n post_max_size=128M";
+    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    fastcgi_index index.php;
+    fastcgi_pass unix:/var/run/php/php-fpm.sock;
+    fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+    include fastcgi_params;
+    fastcgi_read_timeout {{ item.fpm.timeout | default('300') }};
+  }
+
+  location ~ /\.(?!well-known).* {
+      deny all;
+  }
+}
+
+server {
+  if ($host = {{ item.name }}.test) {
+    return 301 https://$host$request_uri;
+  }
+
+  listen 80;
+  listen [::]:80;
+
+  server_name {{ item.name }}.test;
+  return 404;
+}
