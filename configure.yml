@@ -37,7 +37,5 @@
     - role: drivers
       tags: [mssql, ibm]
       become: true
-    - role: valet
-      tags: valet
 
 # vim: ft=yaml.ansible
