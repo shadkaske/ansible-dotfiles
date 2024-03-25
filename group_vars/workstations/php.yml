@@ -1,10 +1,7 @@
 ---
 php_version: '8.2'
-
 php_install_recommends: false
-
 php_enable_webserver: false
-
 php_packages:
   - php8.2
   - php8.2-apcu

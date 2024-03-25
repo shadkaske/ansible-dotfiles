@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Install python3 virtual environment
+sudo apt install --yes python3-venv
+
 python3 -m venv venv
 
 source venv/bin/activate

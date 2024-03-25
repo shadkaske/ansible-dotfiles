@@ -36,21 +36,15 @@ Make sure that the folowing information is configured in the files listed:
     - [x] Sites
     - [x] Ansible
     - [x] Others
-  - [ ] Configure Dev Environment
+  - [x] Configure Dev Environment
     - [x] Install PHP
     - [x] Install Composer
       - [x] Include valet as a global package
     - [x] Install MySQL
-    - [ ] Install Dependencies
+    - [x] Install Dependencies
       - [x] IBM driver
       - [x] Microsoft Sql Driver
-    - [ ] Install NodeJS
-  - [ ] Configure Shell
-    - [ ] Install Packages
-        - [ ] Cargo Packages
-        - [ ] Neovim
-    - [ ] Change Shell
-  - [ ] Configure Kde Plasmas
-    - [ ] Update to latest Version
-    - [ ] Install Packages
+    - [x] Install NodeJS
+    - [ ] Install and enable memcache
+    - [ ] Configure php xdebug
 
