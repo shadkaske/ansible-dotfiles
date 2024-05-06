@@ -1,18 +1,18 @@
 sites_repositories:
   - name: buckets
-    repo: git@bitbucket.org:showplacecabinetry/order-workflow
-    branch: "develop"
-  - name: routes
-    repo: git@bitbucket.org:showplacecabinetry/webdocs-cs
+    repo: git@bitbucket.org:showplacecabinetry/buckets.git
     branch: "develop"
   - name: documentlookup
-    repo: git@bitbucket.org:showplacecabinetry/documentlookup
+    repo: git@bitbucket.org:showplacecabinetry/documentlookup.git
     branch: "develop"
   - name: editracker
-    repo: git@bitbucket.org:showplacecabinetry/editracker
+    repo: git@bitbucket.org:showplacecabinetry/editracker.git
     branch: "develop"
   - name: repcontacts
     repo: git@bitbucket.org:showplacecabinetry/repcontact.git
+    branch: "develop"
+  - name: printapp
+    repo: git@bitbucket.org:showplacecabinetry/printapp.git
     branch: "develop"
 
 ansible_repositories:
@@ -21,9 +21,6 @@ ansible_repositories:
     branch: main
   - name: pro-linode
     repo: git@bitbucket.org:showplacecabinetry/prolinodedevbox.git
-    branch: main
-  - name: dotfiles
-    repo: git@github.com:shadkaske/ansible-dotfiles
     branch: main
 
 code_repositories:
