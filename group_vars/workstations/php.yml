@@ -1,5 +1,5 @@
 ---
-php_version: '8.2'
+php_version: "8.2"
 php_install_recommends: false
 php_enable_webserver: false
 
@@ -19,8 +19,8 @@ php_fpm_pools:
     pool_pm_max_spare_servers: 3
     pool_pm_max_requests: 500
 
-php_fpm_pool_user: {{ ansible_user }}
-php_fpm_pool_group: {{ ansible_user }}
+php_fpm_pool_user: "{{ ansible_user }}"
+php_fpm_pool_group: "{{ ansible_user }}"
 
 php_packages:
   - php8.2
