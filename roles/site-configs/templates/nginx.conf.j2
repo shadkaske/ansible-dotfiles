@@ -1,9 +1,6 @@
 server {
-  listen [::]:443 ssl;
-  listen 443 ssl;
-
-  ssl_certificate {{ ansible_env.HOME }}/.local/share/mkcert/{{ item.name }}.test.pem;
-  ssl_certificate_key {{ ansible_env.HOME }}/.local/share/mkcert/{{ item.name }}.test-key.pem;
+  listen 80;
+  listen [::]:80;
 
   server_name {{ item.name }}.test;
   root {{ site_path }}/{{ item.name }}/public;
@@ -40,16 +37,4 @@ server {
   location ~ /\.(?!well-known).* {
       deny all;
   }
-}
-
-server {
-  if ($host = {{ item.name }}.test) {
-    return 301 https://$host$request_uri;
-  }
-
-  listen 80;
-  listen [::]:80;
-
-  server_name {{ item.name }}.test;
-  return 404;
 }

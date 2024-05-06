@@ -11,22 +11,25 @@
     priv: "*.*:ALL"
     login_unix_socket: /run/mysqld/mysqld.sock
 
-- name: Install mkcert and dependancies
-  ansible.builtin.apt:
-    name:
-      - mkcert
-      - libnss3-tools
-    state: present
+- name: Configure mkcert when site_ssl is true
+  when: site_ssl
+  block:
+    - name: Install mkcert and dependancies
+      ansible.builtin.apt:
+        name:
+          - mkcert
+          - libnss3-tools
+        state: present
 
-- name: Install mkcert CA Certificate
-  become: false
-  ansible.builtin.command:
-    cmd: mkcert -install
-    creates: "{{ ansible_env.HOME }}/.local/share/mkcert/rootCA-key.pem"
+    - name: Install mkcert CA Certificate
+      become: false
+      ansible.builtin.command:
+        cmd: mkcert -install
+        creates: "{{ ansible_env.HOME }}/.local/share/mkcert/rootCA-key.pem"
 
-- name: Set Up SSL Certificates
-  ansible.builtin.include_tasks: mkcert.yml
-  with_items: "{{ sites_repositories }}"
+    - name: Set Up SSL Certificates
+      ansible.builtin.include_tasks: mkcert.yml
+      with_items: "{{ sites_repositories }}"
 
 - name: Install nginx
   ansible.builtin.apt:

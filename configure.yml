@@ -3,6 +3,9 @@
   hosts: workstations
   remote_user: kaskshad
 
+  vars:
+    site_ssl: false
+
   pre_tasks:
     - name: Update the System
       become: true
