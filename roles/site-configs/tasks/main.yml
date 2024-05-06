@@ -40,12 +40,6 @@
     regexp: "www-data"
     replace: "{{ ansible_user }}"
 
-- name: Set PHP Fpm Pool to run as normal user
-  ansible.builtin.replace:
-    path: /etc/php/8.2/fpm/pool.d/www.conf
-    regexp: "www-data"
-    replace: "{{ ansible_user }}"
-
 - name: Create Nginx Site Configs
   ansible.builtin.include_tasks: nginx.yml
   with_items: "{{ sites_repositories }}"
