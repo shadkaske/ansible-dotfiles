@@ -1,19 +1,24 @@
 sites_repositories:
   - name: buckets
     repo: git@bitbucket.org:showplacecabinetry/buckets.git
-    branch: "develop"
+    branch: "main"
+    port: "8080"
   - name: documentlookup
     repo: git@bitbucket.org:showplacecabinetry/documentlookup.git
-    branch: "develop"
+    branch: "main"
+    port: "8081"
   - name: editracker
     repo: git@bitbucket.org:showplacecabinetry/editracker.git
-    branch: "develop"
+    branch: "main"
+    port: "8082"
   - name: repcontacts
     repo: git@bitbucket.org:showplacecabinetry/repcontact.git
-    branch: "develop"
+    branch: "master"
+    port: "8083"
   - name: printapp
     repo: git@bitbucket.org:showplacecabinetry/printapp.git
-    branch: "develop"
+    branch: "master"
+    port: "8084"
 
 ansible_repositories:
   - name: server-configs

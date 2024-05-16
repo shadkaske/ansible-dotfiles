@@ -11,7 +11,6 @@ php_packages:
   - php-dba
   - php-devel
   - php-enchant
-  - php-fpm
   - php-gd
   - php-gmp
   - php-intl
@@ -23,6 +22,7 @@ php_packages:
   - php-pspell
   - php-readline
   - php-redis
+  - php-ssh2
   - php-snmp
   - php-soap
   - php-sqlite3
