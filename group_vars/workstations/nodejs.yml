@@ -1,4 +1,1 @@
-npm_global_packages:
-  - yarn
-
 npm_prefix: "{{ ansible_env.HOME }}/.local/share/npm"

@@ -7,17 +7,10 @@
     site_ssl: false
 
   pre_tasks:
-    - name: Update the System
-      become: true
-      ansible.builtin.apt:
-        update_cache: true
-        upgrade: dist
-
     - name: Install Required Packages
       become: true
-      ansible.builtin.apt:
-        pkg:
-          - git
+      ansible.builtin.package:
+        name: git
         state: present
 
   roles:

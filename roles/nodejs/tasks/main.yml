@@ -13,11 +13,11 @@
 
 - name: Install NodeJs
   become: true
-  community.general.snap:
-    name: node
+  ansible.builtin.dnf:
+    name:
+      - nodejs
+      - yarnpkg
     state: present
-    channel: 18/stable
-    classic: true
 
 - name: Set NPM Prefix
   ansible.builtin.command:
@@ -34,6 +34,6 @@
   community.general.npm:
     name: "{{ item }}"
     global: true
-  with_items: "{{ npm_global_packages | default(['yarn']) }}"
+  with_items: "{{ npm_global_packages | default([]) }}"
 
 # vim: ft=yaml.ansible:
