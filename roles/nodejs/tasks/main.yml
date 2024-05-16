@@ -24,12 +24,6 @@
     cmd: "npm set prefix {{ npm_global }}"
   tags: skip_ansible_lint
 
-- name: Add npm prefix to user .profile
-  ansible.builtin.lineinfile:
-    path: "{{ ansible_env.HOME }}/.profile"
-    line: "export PATH=\"$PATH:{{ npm_global }}/bin\""
-    state: present
-
 - name: Install Global NPM Packages if Defined
   community.general.npm:
     name: "{{ item }}"
