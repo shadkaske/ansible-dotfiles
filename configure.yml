@@ -23,6 +23,7 @@
           loop: "{{ php_packages }}"
 
         # TODO: Set PHP FPM to run as user
+        # TODO: Enable PHP FPM
 
         - name: Install Composer and Sqlite
           ansible.builtin.dnf:

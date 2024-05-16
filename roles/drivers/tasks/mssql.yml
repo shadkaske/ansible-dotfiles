@@ -1,35 +1,23 @@
 ---
-- name: Download Microsoft Repository Key
+- name: Add Microsoft Repo
   ansible.builtin.get_url:
-    url: https://packages.microsoft.com/keys/microsoft.asc
-    dest: /etc/apt/trusted.gpg.d/mssql-release.asc
+    url: https://packages.microsoft.com/config/rhel/9/prod.repo
+    dest: /etc/yum.repos.d/mssql-release.repo
+    mode: "0644"
     owner: root
     group: root
-    mode: u=rw,g=r,o=r
 
-- name: Set stupid long stringgs for mssql url
-  ansible.builtin.set_fact:
-    deb_start: "deb [arch=amd64,armhf,arm64 signed-by=/etc/apt/trusted.gpg.d/mssql-release.asc] "
-    deb_url: "https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/prod "
-    deb_dist: "{{ ansible_distribution_release }} main"
-
-- name: Add Microsoft Repository List
-  ansible.builtin.apt_repository:
-    repo: "{{ deb_start }}{{ deb_url }}{{ deb_dist }}"
-    state: present
-    filename: mssql-release
-
-- name: Install UnixOdbc PreReq
-  ansible.builtin.apt:
-    update_cache: true
-    state: present
-    pkg:
-      - unixodbc
-      - unixodbc-dev
+- name: Remove Possible Conflicting Packages
+  ansible.builtin.dnf:
+    state: absent
+    name:
+      - unixODBC-utf16
+      - unixODBC-utf16-devel
 
 - name: Install MSSQL Odbc Driver
-  ansible.builtin.apt:
+  ansible.builtin.dnf:
     name: msodbcsql18
     state: present
+    update_cache: true
   environment:
     ACCEPT_EULA: "Y"

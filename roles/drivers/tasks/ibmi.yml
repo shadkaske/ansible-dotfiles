@@ -1,24 +1,24 @@
 ---
 - name: Get IBM iaccess sources list
   ansible.builtin.get_url:
-    url: https://public.dhe.ibm.com/software/ibmi/products/odbc/debs/dists/1.1.0/ibmi-acs-1.1.0.list
-    dest: /etc/apt/sources.list.d/ibmi-acs-1.1.0.list
+    url: https://public.dhe.ibm.com/software/ibmi/products/odbc/rpms/ibmi-acs.repo
+    dest: /etc/yum.repos.d/ibmi-acs.repo
     mode: "0644"
     owner: root
     group: root
 
-- name: Install Required Packages
-  ansible.builtin.apt:
-    name:
-      - debconf-utils
-      - odbcinst1debian2
-      - odbcinst
-      - libodbc1
-    state: present
-    update_cache: true
+# - name: Install Required Packages
+#   ansible.builtin.apt:
+#     name:
+#       - debconf-utils
+#       - odbcinst1debian2
+#       - odbcinst
+#       - libodbc1
+#     state: present
+#     update_cache: true
 
 - name: Install iaccess ODBC Driver
-  ansible.builtin.apt:
+  ansible.builtin.dnf:
     name: ibm-iaccess
     state: present
     update_cache: true
