@@ -1,9 +1,8 @@
 ---
 - name: Install nginx
-  ansible.builtin.apt:
+  ansible.builtin.dnf:
     name: nginx
     state: present
-    install_recommends: false
 
 - name: Set Nginx to run as normal user
   ansible.builtin.replace:
@@ -22,4 +21,9 @@
     state: present
   with_items: "{{ sites_repositories }}"
 
+- name: Set Nginx to Enabled
+  ansible.builtin.systemd:
+    name: nginx
+    state: started
+    enabled: true
 # vim: ts=2 tw=2 et ft=yaml.ansible
