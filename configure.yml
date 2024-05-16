@@ -1,7 +1,6 @@
 ---
 - name: Configure PHP Dev Workstations
   hosts: workstations
-  remote_user: kaskshad
 
   vars:
     site_ssl: false
@@ -13,23 +12,15 @@
         name: git
         state: present
 
+    - name: Install PHP Packages
+      ansi
+
+
   roles:
     - role: code
       tags: code
     - role: nodejs
       tags: [node, nodejs]
-    - role: geerlingguy.php-versions
-      tags: [php, dev]
-      become: true
-    - role: geerlingguy.php
-      tags: [php, dev]
-      become: true
-    - role: geerlingguy.composer
-      tags: [php, composer]
-      become: true
-    - role: geerlingguy.mysql
-      tags: [dev, mysql]
-      become: true
     - role: drivers
       tags: [mssql, ibm]
       become: true
