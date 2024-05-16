@@ -1,9 +1,0 @@
----
-- name: "Create certificate for {{ item.name }}"
-  become: false
-  ansible.builtin.command:
-    cmd: "mkcert {{ item.name }}.test"
-    chdir: "{{ ansible_env.HOME }}/.local/share/mkcert"
-    creates: "{{ ansible_env.HOME }}/.local/share/mkcert/{{ item.name }}-key.pem"
-
-# vim: ts=2 tw=2 et ft=yaml.ansible

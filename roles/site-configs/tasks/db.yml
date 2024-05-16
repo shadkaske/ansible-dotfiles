@@ -1,8 +1,0 @@
----
-- name: Create New Database for Site
-  community.mysql.mysql_db:
-    name: "{{ item.name }}"
-    state: present
-    login_unix_socket: /run/mysqld/mysqld.sock
-
-# vim: ts=2 tw=2 et ft=yaml.ansible
