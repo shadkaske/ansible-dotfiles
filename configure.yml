@@ -12,9 +12,24 @@
         name: git
         state: present
 
-    - name: Install PHP Packages
-      ansi
+    - name: Install Php and Composer
+      become: true
+      tags: php
+      block:
+        - name: Install PHP Packages
+          ansible.builtin.dnf:
+            state: present
+            name: "{{ item }}"
+          loop: "{{ php_packages }}"
 
+        # TODO: Set PHP FPM to run as user
+
+        - name: Install Composer and Sqlite
+          ansible.builtin.dnf:
+            state: present
+            name:
+              - composer
+              - sqlite3
 
   roles:
     - role: code
