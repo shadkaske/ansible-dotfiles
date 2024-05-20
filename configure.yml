@@ -29,6 +29,10 @@
               - composer
               - sqlite3
 
+        - name: Set SELinux for HTTP to Permissive
+          tags: skip_ansible_lint
+          ansible.builtin.command: /usr/sbin/semanage permissive -a httpd_t
+
   roles:
     - role: code
       tags: code
