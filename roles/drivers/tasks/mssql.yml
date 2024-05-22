@@ -30,7 +30,14 @@
       - php-pdo
       - php-pear
       - php-devel
+      - unixODBC-devel
     update_cache: true
+
+- name: Update pecl
+  become: true
+  tags: skip_ansible_lint
+  ansible.builtin.command:
+    cmd: pear channel-update pecl.php.net
 
 - name: Install MS SqlSrv PHP
   become: true
