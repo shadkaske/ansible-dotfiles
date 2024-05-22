@@ -21,3 +21,36 @@
     update_cache: true
   environment:
     ACCEPT_EULA: "Y"
+
+- name: Ensure PHP Pecl Dependancies are Installed
+  become: true
+  ansible.builtin.dnf:
+    state: present
+    name:
+      - php-pdo
+      - php-pear
+      - php-devel
+    update_cache: true
+
+- name: Install MS SqlSrv PHP
+  become: true
+  community.general.pear:
+    state: present
+    name: "{{ item }}"
+  loop:
+    - pecl/sqlsrv
+    - pecl/pdo_sqlsrv
+
+- name: Add Drivers to PHP ini
+  become: true
+  ansible.builtin.copy:
+    dest: "{{ item.path }}"
+    content: "{{ item.content }}"
+    owner: root
+    group: root
+    mode: "0644"
+  loop:
+    - path: "/etc/php.d/30-pdo_sqlsrv.ini"
+      content: "extension=pdo_sqlsrv.so"
+    - path: "/etc/php.d/20-sqlsrv.ini"
+      content: "extension=sqlsrv.so"
