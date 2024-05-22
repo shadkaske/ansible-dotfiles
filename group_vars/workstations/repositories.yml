@@ -11,12 +11,12 @@ sites_repositories:
     repo: git@bitbucket.org:showplacecabinetry/editracker.git
     branch: "main"
     port: "8082"
-  - name: repcontacts
-    repo: git@bitbucket.org:showplacecabinetry/repcontact.git
-    branch: "master"
-    port: "8083"
   - name: printapp
     repo: git@bitbucket.org:showplacecabinetry/printapp.git
+    branch: "master"
+    port: "8083"
+  - name: repcontacts
+    repo: git@bitbucket.org:showplacecabinetry/repcontact.git
     branch: "master"
     port: "8084"
 

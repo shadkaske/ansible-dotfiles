@@ -7,16 +7,6 @@
     owner: root
     group: root
 
-# - name: Install Required Packages
-#   ansible.builtin.apt:
-#     name:
-#       - debconf-utils
-#       - odbcinst1debian2
-#       - odbcinst
-#       - libodbc1
-#     state: present
-#     update_cache: true
-
 - name: Install iaccess ODBC Driver
   ansible.builtin.dnf:
     name: ibm-iaccess
