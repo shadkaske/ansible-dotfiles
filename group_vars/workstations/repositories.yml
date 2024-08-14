@@ -1,19 +1,23 @@
+---
 sites_repositories:
   - name: buckets
     repo: git@bitbucket.org:showplacecabinetry/buckets.git
-    branch: "develop"
+    branch: develop
   - name: documentlookup
     repo: git@bitbucket.org:showplacecabinetry/documentlookup.git
-    branch: "develop"
+    branch: develop
   - name: editracker
     repo: git@bitbucket.org:showplacecabinetry/editracker.git
-    branch: "develop"
+    branch: develop
   - name: repcontacts
     repo: git@bitbucket.org:showplacecabinetry/repcontact.git
-    branch: "develop"
+    branch: develop
   - name: printapp
     repo: git@bitbucket.org:showplacecabinetry/printapp.git
-    branch: "develop"
+    branch: develop
+  - name: engineering-change-request
+    repo: git@bitbucket.org:showplacecabinetry/engineering-change-request.git
+    branch: develop
 
 ansible_repositories:
   - name: server-configs

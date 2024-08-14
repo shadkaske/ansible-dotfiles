@@ -5,34 +5,47 @@
 
 - name: Ensure NPM Global Directory Exists
   ansible.builtin.file:
-    path: "{{ npm_global }}"
+    path: '{{ npm_global }}'
     state: directory
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
-    mode: "0775"
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: '0775'
+
+- name: Ensure Snapd is installed and running
+  block:
+    - name: Install Snapd
+      ansible.builtin.package:
+        name: snapd
+        state: present
+
+    - name: Enable and Start Snapd
+      ansible.builtin.service:
+        name: snapd
+        state: started
+        enabled: true
 
 - name: Install NodeJs
   become: true
   community.general.snap:
     name: node
     state: present
-    channel: 18/stable
+    channel: 20/stable
     classic: true
 
 - name: Set NPM Prefix
   ansible.builtin.command:
-    cmd: "npm set prefix {{ npm_global }}"
+    cmd: npm set prefix {{ npm_global }}
   tags: skip_ansible_lint
 
 - name: Add npm prefix to user .profile
   ansible.builtin.lineinfile:
-    path: "{{ ansible_env.HOME }}/.profile"
-    line: "export PATH=\"$PATH:{{ npm_global }}/bin\""
+    path: '{{ ansible_env.HOME }}/.profile'
+    line: export PATH="$PATH:{{ npm_global }}/bin"
     state: present
 
 - name: Install Global NPM Packages if Defined
   community.general.npm:
-    name: "{{ item }}"
+    name: '{{ item }}'
     global: true
   with_items: "{{ npm_global_packages | default(['yarn']) }}"
 
