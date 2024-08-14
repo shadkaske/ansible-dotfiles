@@ -12,6 +12,7 @@
     mode: '0775'
 
 - name: Ensure Snapd is installed and running
+  become: true
   block:
     - name: Install Snapd
       ansible.builtin.package:
