@@ -17,6 +17,7 @@ php_packages:
   - php-ldap
   - php-mbstring
   - php-memcached
+  - php-mysqlnd
   - php-odbc
   - php-opcache
   - php-pspell
